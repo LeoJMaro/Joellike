@@ -31,7 +31,7 @@ def main():
 
     fov_algorithm = 0
     fov_light_walls = True
-    fov_radius = 10   
+    fov_radius = 10
 
     max_monsters_per_room = 3
     max_items_per_room = 2
@@ -82,7 +82,7 @@ def main():
 
         libtcod.console_flush()
         clear_all(con, entities)
-        action = handle_keys(key)
+        action = handle_keys(key, game_state)
 
         move = action.get('move')
         pickup = action.get('pickup')
@@ -128,7 +128,6 @@ def main():
 
         if fullscreen:
             libtcod.console_set_fullscreen(not libtcod.console_is_fullscreen())
-            return True
         for player_turn_result in player_turn_results:
             message = player_turn_result.get('message')
             dead_entity = player_turn_result.get('dead')
